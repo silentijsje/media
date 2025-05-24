@@ -1,0 +1,4 @@
+include:
+
+#  - path: 'docker-compose.networks.yml'
+  - path: 'radarr/docker-compose.radarr.yml'
