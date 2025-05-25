@@ -36,4 +36,4 @@ services:
     # SERVICES
       - traefik.http.services.radarr.loadbalancer.server.scheme=http
       - traefik.http.services.radarr.loadbalancer.server.port=7878
-    MIDDLEWARES
+    # MIDDLEWARES
