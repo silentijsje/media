@@ -1,7 +1,7 @@
 include:
 
   - path: 'portainer/docker-compose.portainer.yaml'
-  - path: 'radarr/docker-compose.radarr.yaml'
+  - path: 'radarr/docker-compose.radarr.yml'
   - path: 'traefik/docker-compose.traefik.yaml'
   - path: 'authentik/docker-compose.authentik.yaml'
   - path: 'bazarr/docker-compose.bazarr.yaml'
