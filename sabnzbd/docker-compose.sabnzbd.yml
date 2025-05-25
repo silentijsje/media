@@ -1,0 +1,39 @@
+###########################################################################
+###########################################################################
+##
+##  Docker Compose File: SABnzbd (LinuxServer.io)
+##  Function: Usenet Download Client
+##
+##  Documentation: https://docs.linuxserver.io/images/docker-sabnzbd
+##
+###########################################################################
+###########################################################################
+services:
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    restart: unless-stopped
+    env_file:
+      - /opt/.env
+    volumes:
+      - ${FOLDER_FOR_MEDIA:?err}:/data
+      - ${FOLDER_FOR_DATA:?err}/sabnzbd:/config
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:sabnzbd
+      - TP_THEME=${TP_THEME:?err}
+    networks:
+      - mediastack
+    labels:
+      - traefik.enable=true
+    # ROUTERS
+      - traefik.http.routers.sabnzbd.service=sabnzbd
+      - traefik.http.routers.sabnzbd.rule=Host(`sabnzbd.${CLOUDFLARE_DNS_ZONE:?err}`)
+      - traefik.http.routers.sabnzbd.entrypoints=secureweb
+      - traefik.http.routers.sabnzbd.middlewares=authentik-forwardauth@file,security-headers@file,traefik-bouncer@file
+    # SERVICES
+      - traefik.http.services.sabnzbd.loadbalancer.server.scheme=http
+      - traefik.http.services.sabnzbd.loadbalancer.server.port=8080
+    # MIDDLEWARES

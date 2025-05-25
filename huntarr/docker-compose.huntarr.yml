@@ -1,0 +1,35 @@
+###########################################################################
+###########################################################################
+##
+##  Docker Compose File: Huntarr
+##  Function: ARR Missing Content Manager
+##
+##  Documentation: https://github.com/plexguide/Huntarr.io
+##
+###########################################################################
+###########################################################################
+services:
+  huntarr:
+    image: huntarr/huntarr:latest
+    container_name: huntarr
+    env_file:
+      - ${FOLDER_FOR_ENV:/opt}/.env
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/huntarr:/config
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+    networks:
+      - mediastack
+    labels:
+      - traefik.enable=true
+    # ROUTERS
+      - traefik.http.routers.huntarr.service=huntarr
+      - traefik.http.routers.huntarr.rule=Host(`huntarr.${CLOUDFLARE_DNS_ZONE:?err}`)
+      - traefik.http.routers.huntarr.entrypoints=secureweb
+      - traefik.http.routers.huntarr.middlewares=authentik-forwardauth@file,security-headers@file,traefik-bouncer@file
+    # SERVICES
+      - traefik.http.services.huntarr.loadbalancer.server.scheme=http
+      - traefik.http.services.huntarr.loadbalancer.server.port=9705
+    # MIDDLEWARES

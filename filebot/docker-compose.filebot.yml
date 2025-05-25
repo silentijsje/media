@@ -1,0 +1,42 @@
+###########################################################################
+###########################################################################
+##
+##  Docker Compose File: Filebot (GitHub)
+##  Function: Lookup and Rename Media from Internet Databases
+##
+##  Docker Page:   https://github.com/filebot/filebot-docker#filebot-xpra
+##  Homepage:      https://www.filebot.net/
+##  User Forum:    https://www.filebot.net/forums
+##
+###########################################################################
+###########################################################################
+services:
+  filebot:
+    image: rednoah/filebot:xpra
+    container_name: filebot
+    restart: unless-stopped
+    env_file:
+      - ${FOLDER_FOR_ENV:/opt}/.env
+    volumes:
+      - ${FOLDER_FOR_MEDIA:?err}/filebot:/filebot
+      - ${FOLDER_FOR_DATA:?err}/filebot:/data/filebot
+    environment:
+#      - XPRA_AUTH=password:value=YOUR_PASSWORD
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
+      - DARK_MODE=1
+    networks:
+      - mediastack
+    labels:
+      - traefik.enable=true
+    # ROUTERS
+      - traefik.http.routers.filebot.service=filebot
+      - traefik.http.routers.filebot.rule=Host(`filebot.${CLOUDFLARE_DNS_ZONE:?err}`)
+      - traefik.http.routers.filebot.entrypoints=secureweb
+      - traefik.http.routers.filebot.middlewares=authentik-forwardauth@file,security-headers@file,traefik-bouncer@file
+    # SERVICES
+      - traefik.http.services.filebot.loadbalancer.server.scheme=http
+      - traefik.http.services.filebot.loadbalancer.server.port=5454
+    # MIDDLEWARES

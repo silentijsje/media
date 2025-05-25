@@ -1,0 +1,38 @@
+###########################################################################
+###########################################################################
+##
+##  Docker Compose File: Prowlarr (LinuxServer.io)
+##  Function: Indexer and Search Manager
+##
+##  Documentation: https://docs.linuxserver.io/images/docker-prowlarr
+##
+###########################################################################
+###########################################################################
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:develop
+    container_name: prowlarr
+    restart: unless-stopped
+    env_file:
+      - ${FOLDER_FOR_ENV:/opt}/.env
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/prowlarr:/config
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:prowlarr
+      - TP_THEME=${TP_THEME:?err}
+    networks:
+      - mediastack
+    labels:
+      - traefik.enable=true
+    # ROUTERS
+      - traefik.http.routers.prowlarr.service=prowlarr
+      - traefik.http.routers.prowlarr.rule=Host(`prowlarr.${CLOUDFLARE_DNS_ZONE:?err}`)
+      - traefik.http.routers.prowlarr.entrypoints=secureweb
+      - traefik.http.routers.prowlarr.middlewares=authentik-forwardauth@file,security-headers@file,traefik-bouncer@file
+    # SERVICES
+      - traefik.http.services.prowlarr.loadbalancer.server.scheme=http
+      - traefik.http.services.prowlarr.loadbalancer.server.port=9696
+    # MIDDLEWARES
