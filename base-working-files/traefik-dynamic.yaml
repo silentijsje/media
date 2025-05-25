@@ -3,11 +3,11 @@
 #
 # Filename: dynamic.yaml        Traefik Dynamic Configuration File
 #
-# Replace all "example.com" values with your domain name
+# Replace all "silentijsje.com" values with your domain name
 #
-#  i.e.   - main: example.com
+#  i.e.   - main: silentijsje.com
 #           sans:
-#             - "*.example.com"
+#             - "*.silentijsje.com"
 #
 #########################################################################
 #########################################################################
@@ -18,9 +18,9 @@ tls:
       defaultGeneratedCert:
         resolver: letsencrypt
         domain:
-          main: example.com
+          main: silentijsje.com
           sans:
-            - "*.example.com"
+            - "*.silentijsje.com"
   options:
     default:
       minVersion: VersionTLS12
@@ -50,8 +50,8 @@ http:
           - OPTIONS
           - PUT
         accessControlAllowOriginList:
-          - https://example.com
-          - https://*.example.com
+          - https://silentijsje.com
+          - https://*.silentijsje.com
         accessControlMaxAge: 100
         addVaryHeader: true
         browserXssFilter: true

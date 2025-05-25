@@ -3,20 +3,20 @@
 #
 # Filename: internal.yaml        Traefik Internal Web Services Configuration File
 #
-# Replace all "example.com" values with your domain name
+# Replace all "silentijsje.com" values with your domain name
 #
-#  i.e.   - main: example.com
+#  i.e.   - main: silentijsje.com
 #           sans:
-#             - "*.example.com"
+#             - "*.silentijsje.com"
 #
 #########################################################################
 #########################################################################
 
 http:
   routers:
-    synology:                                # Synology DSM
-      rule: "Host(`synology.example.com`)"
-      service: synology
+    truenas:                                # Synology DSM
+      rule: "Host(`truenas.silentijsje.com`)"
+      service: truenas
       entryPoints:
         - secureweb
       tls:
@@ -27,7 +27,7 @@ http:
         - traefik-bouncer@file
 
     gateway:                                 # Ubiquiti Dream Machine
-      rule: "Host(`gateway.example.com`)"
+      rule: "Host(`gateway.silentijsje.com`)"
       service: gateway
       entryPoints:
         - secureweb
@@ -39,17 +39,17 @@ http:
         - traefik-bouncer@file
 
   services:
-    synology:
+    truenas:
       loadBalancer:
         servers:
-          - url: "https://192.168.1.8:5001"   # Synology Web UI - HTTP (Insecure)
+          - url: "https://10.0.0.2"   # Synology Web UI - HTTP (Insecure)
         passHostHeader: true
         serversTransport: insecure-no-verify          
 
     gateway:
       loadBalancer:
         servers:
-          - url: "https://192.168.1.1"        # Ubiquiti Web UI - HTTPS
+          - url: "https://10.0.0.1"        # Ubiquiti Web UI - HTTPS
         passHostHeader: true
         serversTransport: insecure-no-verify
 
