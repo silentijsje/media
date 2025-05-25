@@ -2,6 +2,7 @@ include:
 
   - path: 'portainer/docker-compose.portainer.yml'
   - path: 'radarr/docker-compose.radarr.yml'
+  - path: 'traefik/docker-compose.traefik.yml'
 
 networks:
   mediastack:
