@@ -22,14 +22,14 @@ services:
       - ${WEBUI_PORT_PORTAINER:?err}:9000
     networks:
       - mediastack
-    labels:
-      - traefik.enable=true
-    # ROUTERS
-      - traefik.http.routers.portainer.service=portainer
-      - traefik.http.routers.portainer.rule=Host(`portainer.${CLOUDFLARE_DNS_ZONE:?err}`)
-      - traefik.http.routers.portainer.entrypoints=secureweb
-      - traefik.http.routers.portainer.middlewares=authentik-forwardauth@file,security-headers@file,traefik-bouncer@file
-    # SERVICES
-      - traefik.http.services.portainer.loadbalancer.server.scheme=http
-      - traefik.http.services.portainer.loadbalancer.server.port=9000
+    # labels:
+    #   - traefik.enable=true
+    # # ROUTERS
+    #   - traefik.http.routers.portainer.service=portainer
+    #   - traefik.http.routers.portainer.rule=Host(`portainer.${CLOUDFLARE_DNS_ZONE:?err}`)
+    #   - traefik.http.routers.portainer.entrypoints=secureweb
+    #   - traefik.http.routers.portainer.middlewares=authentik-forwardauth@file,security-headers@file,traefik-bouncer@file
+    # # SERVICES
+    #   - traefik.http.services.portainer.loadbalancer.server.scheme=http
+    #   - traefik.http.services.portainer.loadbalancer.server.port=9000
     # MIDDLEWARES
