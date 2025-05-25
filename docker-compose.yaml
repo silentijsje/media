@@ -1,8 +1,20 @@
 include:
 
-  - path: 'portainer/docker-compose.portainer.yml'
-  - path: 'radarr/docker-compose.radarr.yml'
-  - path: 'traefik/docker-compose.traefik.yml'
+  - path: 'portainer/docker-compose.portainer.yaml'
+  - path: 'radarr/docker-compose.radarr.yaml'
+  - path: 'traefik/docker-compose.traefik.yaml'
+  - path: 'authentik/docker-compose.authentik.yaml'
+  - path: 'bazarr/docker-compose.bazarr.yaml'
+  - path: 'crowdsec/docker-compose.crowdsec.yaml'
+  - path: 'ddns-updater/docker-compose.ddns-updater.yaml'
+  - path: 'filebot/docker-compose.filebot.yaml'
+  - path: 'huntarr/docker-compose.huntarr.yaml'
+  - path: 'jellyseer/docker-compose.jellyseer.yaml'
+  - path: 'sonarr/docker-compose.sonarr.yml'
+  - path: 'readarr/docker-compose.readarr.yml'
+  - path: 'qbittorrent/docker-compose.qbittorrent.yml'
+  - path: 'prowlarr/docker-compose.prowlarr.yml'
+  - path: 'sabnzbd/docker-compose.sabnzbd.yml'
 
 networks:
   mediastack:
