@@ -2,3 +2,13 @@ include:
 
   - path: 'portainer/docker-compose.portainer.yml'
   - path: 'radarr/docker-compose.radarr.yml'
+
+networks:
+  mediastack:
+    name: mediastack
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: ${DOCKER_SUBNET:?err}
+        gateway: ${DOCKER_GATEWAY:?err}
