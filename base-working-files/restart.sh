@@ -88,12 +88,12 @@ sudo chmod 664                .env *yaml
 sudo chown $PUID:$PGID        .env *yaml
 sudo touch                    $FOLDER_FOR_DATA/traefik/letsencrypt/acme.json
 sudo chmod 600                $FOLDER_FOR_DATA/traefik/letsencrypt/acme.json && echo "Permissions set to 600 on certs file $FOLDER_FOR_DATA/traefik/letsencrypt/acme.json"
-sudo cp headplane-config.yaml $FOLDER_FOR_DATA/headplane/config.yaml         && echo "File headplane-config.yaml copied to $FOLDER_FOR_DATA/headplane/config.yaml"
-sudo cp headscale-config.yaml $FOLDER_FOR_DATA/headscale/config.yaml         && echo "File headscale-config.yaml copied to $FOLDER_FOR_DATA/headscale/config.yaml"
+#sudo cp headplane-config.yaml $FOLDER_FOR_DATA/headplane/config.yaml         && echo "File headplane-config.yaml copied to $FOLDER_FOR_DATA/headplane/config.yaml"
+#sudo cp headscale-config.yaml $FOLDER_FOR_DATA/headscale/config.yaml         && echo "File headscale-config.yaml copied to $FOLDER_FOR_DATA/headscale/config.yaml"
 sudo cp traefik-static.yaml   $FOLDER_FOR_DATA/traefik/traefik.yaml          && echo "File traefik-static.yaml   copied to $FOLDER_FOR_DATA/traefik/traefik.yaml"
 sudo cp traefik-dynamic.yaml  $FOLDER_FOR_DATA/traefik/dynamic.yaml          && echo "File traefik-dynamic.yaml  copied to $FOLDER_FOR_DATA/traefik/dynamic.yaml"
 sudo cp traefik-internal.yaml $FOLDER_FOR_DATA/traefik/internal.yaml         && echo "File traefik-internal.yaml copied to $FOLDER_FOR_DATA/traefik/internal.yaml"
-sudo cp crowdsec-acquis.yaml  $FOLDER_FOR_DATA/crowdsec/acquis.yaml          && echo "File crowdsec-acquis.yaml  copied to $FOLDER_FOR_DATA/crowdsec/acquis.yaml"
+#sudo cp crowdsec-acquis.yaml  $FOLDER_FOR_DATA/crowdsec/acquis.yaml          && echo "File crowdsec-acquis.yaml  copied to $FOLDER_FOR_DATA/crowdsec/acquis.yaml"
 
 # Subroutine below will check if Docker successully started all containers, before pruning un-used images from Docker
 echo 
