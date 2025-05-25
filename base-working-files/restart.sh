@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 set -e
 
-FOLDER_FOR_YAMLS=/opt/media             # <-- Folder where the yaml and .env files are located
+FOLDER_FOR_YAMLS=/opt/media
 
 # Check if .env exists
 cd $FOLDER_FOR_YAMLS
