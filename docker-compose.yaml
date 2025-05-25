@@ -9,7 +9,7 @@ include:
   - path: 'ddns-updater/docker-compose.ddns-updater.yaml'
   - path: 'filebot/docker-compose.filebot.yaml'
   - path: 'huntarr/docker-compose.huntarr.yaml'
-  - path: 'jellyseer/docker-compose.jellyseer.yaml'
+  - path: 'jellyseerr/docker-compose.jellyseerr.yaml'
   - path: 'sonarr/docker-compose.sonarr.yaml'
   - path: 'readarr/docker-compose.readarr.yaml'
   - path: 'qbittorrent/docker-compose.qbittorrent.yaml'
