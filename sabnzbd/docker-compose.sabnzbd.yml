@@ -14,7 +14,7 @@ services:
     container_name: sabnzbd
     restart: unless-stopped
     env_file:
-      - /opt/.env
+      - ./.env
     volumes:
       - ${FOLDER_FOR_MEDIA:?err}:/data
       - ${FOLDER_FOR_DATA:?err}/sabnzbd:/config

@@ -17,7 +17,7 @@ services:
       - mediastack
     user: ${PUID:?err}:${PGID:?err}
     env_file:
-      - ${FOLDER_FOR_ENV:/opt}/.env
+      - ./.env
     environment:
       - TZ=${TIMEZONE:?err}
     ports:

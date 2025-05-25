@@ -13,7 +13,7 @@ services:
     image: huntarr/huntarr:latest
     container_name: huntarr
     env_file:
-      - ${FOLDER_FOR_ENV:/opt}/.env
+      - ./.env
     volumes:
       - ${FOLDER_FOR_DATA:?err}/huntarr:/config
     environment:

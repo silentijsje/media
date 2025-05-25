@@ -14,7 +14,7 @@ services:
     container_name: flaresolverr
     restart: unless-stopped
     env_file:
-      - ${FOLDER_FOR_ENV:/opt}/.env
+      - ./.env
     environment:
       - LOG_LEVEL=info
       - LOG_HTML=false

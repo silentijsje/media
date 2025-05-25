@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
     user: ${PUID:?err}:${PGID:?err}
     env_file:
-      - ${FOLDER_FOR_ENV:/opt}/.env
+      - ./.env
     depends_on:
       - crowdsec
     networks:

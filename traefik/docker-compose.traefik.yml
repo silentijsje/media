@@ -14,7 +14,7 @@ services:
     container_name: traefik
     restart: unless-stopped
     env_file:
-      - /opt/.env
+      - ./.env
     networks:
       - mediastack
     user: root

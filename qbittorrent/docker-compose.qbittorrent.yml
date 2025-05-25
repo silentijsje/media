@@ -14,7 +14,7 @@ services:
     container_name: qbittorrent
     restart: unless-stopped
     env_file:
-      - ${FOLDER_FOR_ENV:/opt}/.env
+      - ./.env
     volumes:
       - ${FOLDER_FOR_MEDIA:?err}:/data
       - ${FOLDER_FOR_DATA:?err}/qbittorrent:/config

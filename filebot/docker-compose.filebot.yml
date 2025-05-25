@@ -16,7 +16,7 @@ services:
     container_name: filebot
     restart: unless-stopped
     env_file:
-      - ${FOLDER_FOR_ENV:/opt}/.env
+      - ./.env
     volumes:
       - ${FOLDER_FOR_MEDIA:?err}/filebot:/filebot
       - ${FOLDER_FOR_DATA:?err}/filebot:/data/filebot
