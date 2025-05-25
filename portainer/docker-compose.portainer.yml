@@ -14,7 +14,7 @@ services:
     container_name: portainer
     restart: always
     env_file:
-      - ./.env
+      - ../.env
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${FOLDER_FOR_DATA:?err}/portainer:/data
